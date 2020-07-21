@@ -1,4 +1,4 @@
-Files found in NOOBS_lite_v3_3
+Files found in NOOBS_lite_v3_4
 ==============================
 
 Files that go in the boot partition of the SD Card
@@ -7,7 +7,7 @@ Files that go in the boot partition of the SD Card
 ```
 drwxr-xr-x	4096	
 -rw-rw-r--	25310	bcm2709-rpi-2-b.dtb
--rw-r--r--	28573696	recovery.rfs
+-rw-r--r--	28581888	recovery.rfs
 -rw-rw-r--	303	BUILD-DATA
 -rw-rw-r--	40988	bcm2711-rpi-4-b.dtb
 -rw-rw-r--	24246	bcm2708-rpi-b-plus.dtb
@@ -15,7 +15,7 @@ drwxr-xr-x	4096
 -rw-rw-r--	27099	bcm2710-rpi-3-b-plus.dtb
 -rw-r--r--	121	recovery.cmdline
 -rw-rw-r--	23764	bcm2708-rpi-cm.dtb
--rwxrwxr-x	3436384	recovery7l.img
+-rwxrwxr-x	3435856	recovery7l.img
 drwxrwxr-x	12288	overlays
 -rw-rw-r--	1373	overlays/gpio-key.dtbo
 -rw-rw-r--	1922	overlays/rotary-encoder.dtbo
@@ -209,18 +209,18 @@ drwxrwxr-x	12288	overlays
 -rw-rw-r--	1018	overlays/rpi-ft5406.dtbo
 drwxrwxr-x	4096	os
 -rw-r--r--	690884	recovery.elf
--rwxrwxr-x	3043096	recovery.img
+-rwxrwxr-x	3043104	recovery.img
 -rw-rw-r--	24424	bcm2708-rpi-zero-w.dtb
 -rw-rw-r--	26480	bcm2710-rpi-3-b.dtb
 -rw-r--r--	784284	recover4.elf
--rw-rw-r--	2356	INSTRUCTIONS-README.txt
+-rw-rw-r--	2450	INSTRUCTIONS-README.txt
 -rw-rw-r--	23983	bcm2708-rpi-b.dtb
 -rw-r--r--	52304	bootcode.bin
 -rw-rw-r--	25439	bcm2710-rpi-2-b.dtb
 drwxrwxr-x	4096	defaults
 drwxrwxr-x	4096	defaults/slides
 -rw-rw-r--	40113	defaults/slides/A.png
--rwxrwxr-x	3205664	recovery7.img
+-rwxrwxr-x	3205672	recovery7.img
 -rw-rw-r--	0	RECOVERY_FILES_DO_NOT_EDIT
 -rw-rw-r--	25294	bcm2710-rpi-cm3.dtb
 -rw-rw-r--	23688	bcm2708-rpi-zero.dtb
@@ -347,7 +347,7 @@ lrwxrwxrwx	root/root	7	/bin/watch
 lrwxrwxrwx	root/root	7	/bin/zcat
 drwxrwxr-x	root/root	3	/boot
 drwxr-xr-x	root/root	52	/dev
-crw--w--w-	root/root	5,	16:46
+crw--w--w-	root/root	5,	03:57
 lrwxrwxrwx	root/root	10	/dev/log
 drwxrwxr-x	root/root	3	/dev/pts
 drwxr-xr-x	root/root	489	/etc
@@ -1086,7 +1086,7 @@ lrwxrwxrwx	root/root	17	/usr/bin/printf
 -rwxr-xr-x	root/root	21196	/usr/bin/prlimit
 lrwxrwxrwx	root/root	17	/usr/bin/readlink
 lrwxrwxrwx	root/root	17	/usr/bin/realpath
--rwxr-xr-x	root/root	868312	/usr/bin/recovery
+-rwxr-xr-x	root/root	901080	/usr/bin/recovery
 -rwxr-xr-x	root/root	5812	/usr/bin/renice
 lrwxrwxrwx	root/root	17	/usr/bin/reset
 lrwxrwxrwx	root/root	17	/usr/bin/resize
