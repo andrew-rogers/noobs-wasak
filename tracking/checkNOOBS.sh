@@ -1,8 +1,6 @@
 #!/bin/sh
 
-ROOT=$(git rev-parse --show-toplevel)
-DOWNLOADS="$ROOT/Downloads"
-NOOBS_ROOTS="$ROOT/NOOBS-roots"
+. $(git rev-parse --show-toplevel)/functions.sh
 
 check() {
     fn=$1
@@ -22,6 +20,8 @@ track() {
     fldir="$ROOT/file-lists/$bn"
     flmd="$ROOT/tracking/file-list.md"
     tracking="$ROOT/tracking"
+
+    set_var LATEST_RFS "$root/recovery.rfs"
 
     # Produce new lists for NOOBS version
     mkdir -p "$fldir"
@@ -45,7 +45,7 @@ track() {
     echo '```' >> "$flmd"
     cat "$fldir/root.ls" >> "$flmd"
     echo '```' >> "$flmd"
-    
+
     # Copy the recovery.cmdline and init files
     cp "$root/recovery.cmdline" "$tracking/"
     unsquashfs -f -d "$tracking" "$root/recovery.rfs" init
