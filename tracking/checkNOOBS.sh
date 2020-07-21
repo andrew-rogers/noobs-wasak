@@ -26,7 +26,7 @@ track() {
     # Produce new lists for NOOBS version
     mkdir -p "$fldir"
     ( cd "$root" && find ./ -printf '%M\t%s\t%p\n') | sed 's|[.]/||' > "$fldir/boot.ls"
-    unsquashfs -ll "$root/recovery.rfs" | sed 's|squashfs-root||' > "$fldir/root.ls"
+    unsquashfs -ll "$root/recovery.rfs" | sed 's|squashfs-root||' | awk '{print $1 "\t" $2 "\t" $3 "\t" $6}' > "$fldir/root.ls"
 
     # Update the tracker lists
     echo "Files found in $bn" > "$flmd"
