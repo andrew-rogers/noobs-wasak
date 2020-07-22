@@ -52,6 +52,16 @@ track() {
 }
 
 for filename in "$DOWNLOADS"/NOOBS_lite_v*.zip; do
-    check "$filename"
+    if [ -f "$filename" ] ; then
+        check "$filename"
+    fi
 done
 
+# Reload the variables
+if [ -f "$ROOT/variables.sh" ] ; then
+    . "$ROOT/variables.sh"
+fi
+
+if [ -z "$LATEST_RFS" ] ; then
+    echo "No NOOBS recovery.rfs has been located."
+fi

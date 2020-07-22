@@ -20,7 +20,7 @@ runinstaller quiet ramdisk_size=32768 root=/dev/ram0 init=/init_wasak vt.cur_def
 Starting the network
 --------------------
 
-As WaSaK support headless install, the network is used to control the system and must be brought up automatically. WaSaK uses the DHCP client daemon, **dhcpcd**, from the NOOBS system to start the networking. Wireless networks are configured using the **wpa_supplicant.conf** file stored on the boot partition of the SD Card. NOOBS renames this file to **wpa_supplicant.conf.bak** so that is used if **wpa_supplicant.conf** is not found.
+As WaSaK support headless install, the network is used to control the system and must be brought up automatically. WaSaK uses the DHCP client daemon, **dhcpcd**, from the NOOBS system to start the networking. Wireless networks are configured using the **wpa_supplicant.conf** file stored on the boot partition of the SD Card. NOOBS renames this file to **wpa_supplicant.conf.bak** so that is used if **wpa_supplicant.conf** is not found. The **wpa_supplicant** does not need to be explicitly started as it is started by **dhcpcd** as needed.
 
 WaSak Extensions
 ----------------

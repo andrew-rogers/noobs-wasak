@@ -1,12 +1,14 @@
 Tracking changes to NOOBS binaries
 ==================================
 
+The NOOBS binaries can be download from [here](https://www.raspberrypi.org/downloads/noobs/).
+
 As fas as possible, NOOBS binaries are used as is. However, as NOOBS is updated, new feature may come along that could be made use of. Also changes may impact the way WaSaK operates. For these reasons, some changes to the NOOBS filesystems are tracked.
 
 recovery.cmdline
 ----------------
 
-This can contain options to control the NOOBS recovery program. **vncinstall** and **forcetrigger** are used so that the VNC server is started and the OS selection menu is triggered. The first process the kernel starts can be specified here with the **init=/init** option.
+This can contain options to control the NOOBS recovery program. **vncinstall** and **forcetrigger** are used so that the VNC server is started and the OS selection menu is triggered. The first process the kernel starts can be specified here with the **init=/init** option. The VNC method can be used on the original NOOBS and does not require WaSaK, however, it should also work with WaSaK.
 
 recovery.rfs
 ------------

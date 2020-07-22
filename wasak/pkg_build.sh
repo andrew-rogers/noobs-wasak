@@ -1,9 +1,11 @@
 #!/bin/sh
 
+BOOT="$1"
+
 . $(git rev-parse --show-toplevel)/functions.sh
 
 PKG_BUILD_DIR="$ROOT/wasak/pkg_build.d"
-PKG_DST="$ROOT/boot/wasak_packages"
+PKG_DST="$BOOT/wasak_packages"
 
 mkdir -p "$PKG_DST"
 

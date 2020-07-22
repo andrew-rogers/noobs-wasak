@@ -2,24 +2,37 @@
 
 . $(git rev-parse --show-toplevel)/functions.sh
 
-# Copy the latest NOOBS recovery.rfs.
-mkdir -p "$ROOT/boot"
-rm -f "$ROOT/boot/recovery.rfs"
+if [ -d "$1" ] ; then
+    BOOT=$(cd "$1" && pwd)
+else
+    BOOT="$ROOT/boot"
+fi
 
-if [ -f "$LATEST_RFS" ] ; then 
-    cp "$LATEST_RFS" "$ROOT/boot/recovery.rfs"
+patch_recovery_rfs() {
+    RFS="$1"
+
+    # Append init_wasak to the recovery.rfs SquashFS.
+    [ -f "$RFS" ] && mksquashfs "$ROOT/wasak/init_wasak" "$RFS" -all-root
+}
+
+mkdir -p "$BOOT"
+
+# Copy the latest NOOBS recovery files.
+if [ -f "$LATEST_RFS" ] ; then
+    patch_recovery_rfs "$LATEST_RFS"
+    cp -r $(dirname "$LATEST_RFS")/* "$BOOT/"
 else
     echo "Could not find NOOBS recovery.rfs file."
 fi
 
-# Append init_wasak to the recovery.rfs SquashFS.
-[ -f "$ROOT/boot/recovery.rfs" ] && mksquashfs "$ROOT/wasak/init_wasak" "$ROOT/boot/recovery.rfs" -all-root
-
 # Copy the WaSaK initialisation script.
-cp "$ROOT/wasak/wasak.sh" "$ROOT/boot/"
+cp "$ROOT/wasak/wasak.sh" "$BOOT/"
 
 # Copy the new cmdline
-cp "$ROOT/wasak/recovery.cmdline" "$ROOT/boot/"
+cp "$ROOT/wasak/recovery.cmdline" "$BOOT/"
 
 # Invoke the package builder
-$ROOT/wasak/pkg_build.sh
+$ROOT/wasak/pkg_build.sh "$BOOT"
+
+# Copy the wpa_supplicant.conf
+cp "$DOWNLOADS/wpa_supplicant.conf" "$BOOT/"

@@ -7,6 +7,12 @@ The boot files are created in the **boot** directory by running
 $ wasak/mkbootdir.sh
 ```
 
+The destination directory can be specified if an alternative destination is required. This can be useful to place the boot files directly onto the SD Card.
+
+```
+$ wasak/mkbootdir.sh /mnt/sd
+```
+
 **wasak/mkbootdir.sh** will run the **wasak/pkg_build.sh** script which will then build the WaSaK extension packages and create zip files for each extension package in the **boot/wasak_packages** directory.
 
 Copying to SD Card
@@ -52,6 +58,4 @@ Example manual mount and copy
 # sync
 # umount /mnt/sd
 ```
-
-
 

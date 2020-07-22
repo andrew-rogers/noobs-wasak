@@ -2,7 +2,7 @@
 
 ## NOOBS supports headless OS installation...
 
-Before going further, NOOBS does offer the option of (headless installation of Raspberry Pi operating systems)[https://www.raspberrypi.org/documentation/configuration/wireless/headless.md]. The NOOBS installer can be operated remotely using VNC and provides a desktop like experience.
+Before going further, NOOBS does offer the option of (headless installation of Raspberry Pi operating systems)[https://www.raspberrypi.org/forums/viewtopic.php?t=141559]. The NOOBS installer can be operated remotely using VNC and provides a nice GUI. Just search the internet for 'noobs vncinstall forcetrigger' to find many guides on how to do this.
 
 ## ...so why WaSaK?
 
@@ -10,7 +10,7 @@ Before going further, NOOBS does offer the option of (headless installation of R
 * Remote terminal access prior to any installation.
 * Avoid repartitioning of SD Card until required by you! NOOBS modifies the SD Card partition table even before an OS is selected for installation.
 * Because repartitioning is avoided, the SD Card can still be accessed when inserted into an Android device.
-* WaSak extension packages are zip files, easily accessible on most devices.
+* WaSaK extension packages are zip files, easily accessible on most devices.
 * Allows much more hacking and hands-on learning.
 * Does not require installation of a VNC viewer.
 * Dedicated embedded applications can be facilitated simply by creating a WaSaK extension package without requiring a desktop OS.
