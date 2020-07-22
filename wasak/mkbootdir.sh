@@ -21,3 +21,5 @@ cp "$ROOT/wasak/wasak.sh" "$ROOT/boot/"
 # Copy the new cmdline
 cp "$ROOT/wasak/recovery.cmdline" "$ROOT/boot/"
 
+# Invoke the package builder
+$ROOT/wasak/pkg_build.sh

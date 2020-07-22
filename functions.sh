@@ -1,4 +1,4 @@
-# Shebang not reguired. This file is sourced by other scripts.
+# Shebang not required. This file is sourced by other scripts.
 
 ROOT=$(git rev-parse --show-toplevel)
 DOWNLOADS="$ROOT/Downloads"
@@ -27,7 +27,7 @@ set_var()
         # Variable name exists so just substitute value
         sed -i "s|^$name=.*|$name=$val|" "$file"
       else
-	# Variable doesn't exist so append
+        # Variable doesn't exist so append
         echo "$name=$val" >> "$file"
       fi
     fi
