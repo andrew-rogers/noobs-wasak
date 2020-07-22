@@ -1,24 +1,20 @@
 Building the WaSaK boot files
 =============================
 
-The boot files are created in the **boot** directory by running
+The boot files are created in the **boot.zip** archive by running
 
 ```
 $ wasak/mkbootdir.sh
 ```
 
-The destination directory can be specified if an alternative destination is required. This can be useful to place the boot files directly onto the SD Card.
+**wasak/mkbootdir.sh** will run the **wasak/pkg_build.sh** script which will then build the WaSaK extension packages and create zip files for each extension package in the **boot/wasak_packages** directory. The packages will be copied into the NOOBS boot directory prior to the **boot.zip** archive being created.
 
-```
-$ wasak/mkbootdir.sh /mnt/sd
-```
+The WaSaK init script, **init_wasak**, is appended to the original NOOBS **recovery.rfs** and the **recovery.cmdline** file is replaced.
 
-**wasak/mkbootdir.sh** will run the **wasak/pkg_build.sh** script which will then build the WaSaK extension packages and create zip files for each extension package in the **boot/wasak_packages** directory.
+Extracting to SD Card
+---------------------
 
-Copying to SD Card
-------------------
-
-The boot files are to be copied onto the first partition of the SD Card alongside the existing NOOBS boot files. Note that the **recovery.rfs** and **recovery.cmdline** files are replaced.
+The boot files are to be extracted onto the first partition of the SD Card.
 
 Locate the mount point of the first partition of the SD Card by running
 
@@ -41,7 +37,8 @@ gvfsd-fuse on /run/user/1000/gvfs type fuse.gvfsd-fuse (rw,nosuid,nodev,relatime
 The last entry shows where the first partition of the SD Card is mounted. For the above example, this is **/run/media/andrew/C0BE-D6CB**. If the first partition is mounted then run a command similar to
 
 ```
-$ cp -r boot/* /run/media/andrew/C0BE-D6CB/
+$ MNT=/run/media/andrew/C0BE-D6CB/
+$( ZIP="$PWD/boot.zip" && cd "$MNT" && unzip "$ZIP" )
 ```
 but replacing the mount point with the mount point discovered above.
 
@@ -49,12 +46,12 @@ but replacing the mount point with the mount point discovered above.
 
 If the first partition does not get automatically mounted, then this will need to be done manually. It is important to ensure the correct device is used for the SD Card. On some configurations, the first partition will fail to automatically mount once NOOBS has modified the partition table, manual mount still works.
 
-Example manual mount and copy
+Example manual mount and zip extraction
 
 ```
 # mkdir /mnt/sd
 # mount -t vfat /dev/sdd1 /mnt/sd
-# cp -r boot/* /mnt/sd
+# ( ZIP="$PWD/boot.zip" && cd /mnt/sd && unzip "$ZIP" )
 # sync
 # umount /mnt/sd
 ```
