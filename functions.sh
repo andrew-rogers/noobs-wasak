@@ -11,7 +11,7 @@ fi
 set_var()
 {
   local name="$1"
-  local val="$2"
+  local val="\"$2\""
   local file="$ROOT/variables.sh"
 
   [ -z "$name" ] && return

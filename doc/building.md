@@ -14,35 +14,42 @@ The WaSaK init script, **init_wasak**, is appended to the original NOOBS **recov
 Extracting to SD Card
 ---------------------
 
-The boot files are to be extracted onto the first partition of the SD Card.
+The boot files are to be extracted onto the first partition of the SD Card. In most modern Linux desktop systems the first partition of the SD card will be automatically mounted. The instructions for installing NOOBS onto the SD card can be used to install WaSaK, except that you will extract the WaSaK zip file and not the NOOBS one! WasaK provides a selection menu to make the extraction easier on Linux computers. If you don't want to use the Linux desktop, Mac OS or Windows there are command line methods that can be used, some are discussed below.
+
+### Boot partition selection menu
+
+If the SD card is mounted the **utils/prepareSD.sh** script can be used to extract the boot files. During the first use a menu will appear to allows selection of the relevant device. This menu will not appear on subsequent use unless the device or mount point details change.
+
+### Automatically mounted first partition
 
 Locate the mount point of the first partition of the SD Card by running
 
 ```
-$ mount
+$ lsblk -l
 ```
 Which will produce something like the below
 
 ```
-proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
-sys on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
-dev on /dev type devtmpfs (rw,nosuid,relatime,size=1972872k,nr_inodes=493218,mode=755)
-run on /run type tmpfs (rw,nosuid,nodev,relatime,mode=755)
-/dev/sda5 on / type ext4 (rw,relatime)
-fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
-gvfsd-fuse on /run/user/1000/gvfs type fuse.gvfsd-fuse (rw,nosuid,nodev,relatime,user_id=1000,group_id=1000)
-/dev/sdd1 on /run/media/andrew/C0BE-D6CB type vfat (rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,showexec,utf8,flush,errors=remount-ro,uhelper=udisks2)
+NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda    8:0    0 465.8G  0 disk 
+sda1   8:1    0    15G  0 part 
+sda2   8:2    0    32G  0 part [SWAP]
+sda3   8:3    0  93.2G  0 part 
+sda4   8:4    0     1K  0 part 
+sda5   8:5    0  83.2G  0 part /
+sdd    8:48   1    30G  0 disk 
+sdd1   8:49   1    30G  0 part /run/media/andrew/C0BE-D6CB
 ```
 
 The last entry shows where the first partition of the SD Card is mounted. For the above example, this is **/run/media/andrew/C0BE-D6CB**. If the first partition is mounted then run a command similar to
 
 ```
 $ MNT=/run/media/andrew/C0BE-D6CB/
-$( ZIP="$PWD/boot.zip" && cd "$MNT" && unzip "$ZIP" )
+$ ( ZIP="$PWD/boot.zip" && cd "$MNT" && unzip "$ZIP" )
 ```
 but replacing the mount point with the mount point discovered above.
 
-### Manual mounting of first partition ###
+### Manual mounting of first partition
 
 If the first partition does not get automatically mounted, then this will need to be done manually. It is important to ensure the correct device is used for the SD Card. On some configurations, the first partition will fail to automatically mount once NOOBS has modified the partition table, manual mount still works.
 
